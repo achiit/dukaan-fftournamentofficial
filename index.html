@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101014">
+<title>FF_TOURNAMENT_OFFICIAL</title>
+<style>
+:root{--bg:#0b0b0f;--panel:#15151c;--panel2:#1d1d26;--red:#ff3b30;--orange:#ff8a24;--text:#f7f7fb;--muted:#a8a8b5;--line:#30303b;--green:#40d98a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#42150f 0,transparent 32%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:11px;padding:12px 16px;font-weight:800;color:#fff;background:linear-gradient(100deg,var(--red),var(--orange))}button.secondary{background:#272731;border:1px solid var(--line)}button.danger{background:#762a2a}button.small{padding:7px 10px;font-size:12px}.wrap{max-width:1100px;margin:auto;padding:18px}.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 22px}.brand{font-weight:950;letter-spacing:.4px}.brand span{color:var(--orange)}.nav-actions{display:flex;gap:8px;flex-wrap:wrap}.hero{border:1px solid #5b2a21;border-radius:22px;padding:26px;background:linear-gradient(120deg,rgba(255,59,48,.18),rgba(255,138,36,.08)),linear-gradient(145deg,#191920,#101015);position:relative;overflow:hidden}.eyebrow{color:#ff9b63;text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:2px}.hero h1{font-size:clamp(30px,6vw,56px);line-height:1.02;margin:12px 0}.hero p{color:#d2d2dc;max-width:620px}.hero .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.stats,.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0}.stat,.card,.section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}.stat strong{display:block;font-size:22px}.muted{color:var(--muted)}.section{margin:16px 0}.section h2{margin:0 0 14px;font-size:21px}.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.prize{border-top:3px solid var(--orange)}.prize strong{font-size:28px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px;margin:10px 0}.field label{font-size:13px;color:#d7d7e1;font-weight:700}.field input,.field select,.field textarea{width:100%;background:#0f0f15;color:#fff;border:1px solid #383844;border-radius:10px;padding:11px 12px;min-width:0}.field textarea{min-height:80px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}.notice{border:1px solid #694024;background:#2a1c13;padding:12px;border-radius:12px;color:#ffd2a8}.hidden{display:none!important}.pill{display:inline-block;padding:4px 9px;border-radius:100px;background:#2c2c37;color:#eee;font-size:12px;font-weight:800}.pill.ok{background:#123d2a;color:#8bf0b9}.pill.bad{background:#4b2020;color:#ffb3ad}.pill.pending{background:#493518;color:#ffd38a}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:720px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:#ffb27a;font-size:12px;text-transform:uppercase}details{border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0;background:#111117}summary{cursor:pointer;font-weight:800}.footer{text-align:center;color:var(--muted);padding:24px 0 40px;font-size:12px}.qrbox{padding:15px;border:1px dashed #555;border-radius:12px;text-align:center;color:var(--muted)}.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#252530;border:1px solid #50505c;padding:12px 16px;border-radius:12px;display:none;max-width:90%;z-index:20}.adminbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.smalltext{font-size:12px;color:var(--muted)}
+@media(max-width:720px){.wrap{padding:12px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.cards,.grid2,.formgrid{grid-template-columns:1fr}.hero{padding:21px}.nav{align-items:flex-start}.brand{max-width:180px}.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <div class="brand">🔥 FF_<span>TOURNAMENT</span>_OFFICIAL</div>
+    <div class="nav-actions"><button class="secondary" onclick="go('register')">Register</button><button class="secondary" onclick="go('lookup')">Check Status</button><button class="secondary" onclick="go('admin')">Owner Panel</button></div>
+  </header>
+  <main id="publicView">
+    <section class="hero">
+      <div class="eyebrow">Online Free Fire Tournament</div>
+      <h1 id="heroName">FF_TOURNAMENT_OFFICIAL</h1>
+      <p>Play from home. Join the battle. Compete with your squad and fight for the prizes.</p>
+      <div class="actions"><button onclick="go('register')">⚡ Register Now</button><button class="secondary" onclick="go('rules')">Read Rules</button></div>
+    </section>
+    <div class="stats">
+      <div class="stat"><span class="muted">Tournament date</span><strong id="dateText">18 Oct 2026</strong><span id="dayText" class="smalltext">Sunday</span></div>
+      <div class="stat"><span class="muted">Map</span><strong id="mapText">Bermuda</strong><span id="modeText" class="smalltext">Solo & Squad</span></div>
+      <div class="stat"><span class="muted">Slots remaining</span><strong id="slotsText">48</strong><span class="smalltext" id="minText">44 players minimum</span></div>
+      <div class="stat"><span class="muted">Registration</span><strong id="openText">Open</strong><span id="deadlineText" class="smalltext">Deadline: 17 Oct 2026</span></div>
+    </div>
+    <section class="section"><h2>🎮 Choose your battle</h2><div class="cards">
+      <div class="card"><span class="pill">SOLO</span><h3>Solo Match</h3><strong id="soloFee">₹15</strong><p class="muted">Entry fee per player</p><button onclick="go('register','Solo')">Join Solo</button></div>
+      <div class="card"><span class="pill">SQUAD</span><h3>4-Player Squad</h3><strong id="squadFee">₹60</strong><p class="muted">Entry fee per team</p><button onclick="go('register','Squad')">Join Squad</button></div>
+      <div class="card"><span class="pill">CUSTOM</span><h3 id="extraModeTitle">CS / BR / Lone Wolf</h3><p class="muted">Additional formats are organizer-configurable.</p><button class="secondary" onclick="go('register')">View Registration</button></div>
+    </div></section>
+    <section class="section"><h2>🏆 Prize pool</h2><div class="cards">
+      <div class="card prize"><span>🥇 First prize</span><strong id="prize1">₹299</strong><p class="muted">Winning team / player as configured</p></div>
+      <div class="card prize"><span>🥈 Second prize</span><strong id="prize2">₹199</strong><p class="muted">Winning team / player as configured</p></div>
+      <div class="card prize"><span>🥉 Third prize</span><strong id="prize3">₹99</strong><p class="muted">Winning team / player as configured</p></div>
+    </div><p class="smalltext">Squad prizes are awarded to the entire winning team, not separately to each member.</p></section>
+    <section class="section"><h2>⏱️ Match schedule</h2><div class="grid2"><div><p>🚪 <b>Room creation:</b> <span id="roomTime">10:00 AM</span></p><p>🔥 <b>Match starts:</b> <span id="matchTime">10:30 AM</span></p></div><div><p>🗺️ <b>Map:</b> <span id="scheduleMap">Bermuda</span></p><p>🎮 <b>Modes:</b> <span id="scheduleModes">Solo, Squad</span></p></div></div></section>
+    <section id="register" class="section"><h2>📝 Tournament registration</h2><div id="closedNotice" class="notice hidden">Registration is currently closed by the organizer.</div>
+      <form id="regForm">
+        <div class="formgrid">
+          <div class="field"><label>Registration type</label><select id="regType" required onchange="updateRegFields()"><option value="Solo">Solo</option><option value="Squad">4-Player Squad</option></select></div>
+          <div class="field"><label>Captain / Player name</label><input id="playerName" required maxlength="70" placeholder="Full name"></div>
+          <div class="field"><label>In-game name (IGN)</label><input id="ign" required maxlength="40" placeholder="Free Fire IGN"></div>
+          <div class="field"><label>Free Fire UID</label><input id="uid" required inputmode="numeric" pattern="[0-9]{6,15}" placeholder="6–15 digit UID"></div>
+          <div class="field"><label>Mobile number</label><input id="mobile" required inputmode="numeric" pattern="[0-9]{10}" placeholder="10-digit mobile number"></div>
+          <div class="field"><label>City</label><input id="city" required placeholder="City"></div>
+          <div class="field"><label>State</label><input id="state" required placeholder="State"></div>
+          <div class="field squadOnly hidden"><label>Team name</label><input id="teamName" maxlength="50" placeholder="Squad team name"></div>
+          <div class="field squadOnly hidden"><label>Player 2 name / IGN / UID</label><input id="p2" placeholder="Name | IGN | UID"></div>
+          <div class="field squadOnly hidden"><label>Player 3 name / IGN / UID</label><input id="p3" placeholder="Name | IGN | UID"></div>
+          <div class="field squadOnly hidden"><label>Player 4 name / IGN / UID</label><input id="p4" placeholder="Name | IGN | UID"></div>
+          <div class="field"><label>Payment method</label><select id="payment" onchange="paymentFields()"><option>Online UPI</option><option>Cash</option></select></div>
+          <div class="field"><label>Transaction ID / UTR (online only)</label><input id="utr" placeholder="Enter UTR after paying"></div>
+          <div class="field full" id="qrField"><div class="qrbox" id="qrDisplay">UPI QR has not been configured by the organizer yet.</div></div>
+          <div class="field full"><label>Payment screenshot (optional in this local demo)</label><input id="screenshot" type="file" accept="image/*"><span class="smalltext">Demo file is not uploaded to a server. Do not use this file for real payment verification.</span></div>
+        </div>
+        <div class="notice">This is a local preview. Submissions are saved only in this browser on this device; no organizer receives them automatically.</div>
+        <p><b>Entry fee:</b> <span id="feePreview">₹15</span></p><button type="submit" id="submitBtn">Submit Registration</button>
+      </form>
+      <div id="regSuccess" class="notice hidden"></div>
+    </section>
+    <section id="lookup" class="section"><h2>🔎 Check registration status</h2><div class="field"><label>Registration ID</label><input id="lookupId" placeholder="Example: FF-ABC123"><button onclick="lookupRegistration()">Check Status</button></div><div id="lookupResult"></div></section>
+    <section id="rules" class="section"><h2>📜 Tournament rules & FAQ</h2>
+      <details><summary>Player details</summary><p>Enter the correct Free Fire UID and complete registration details. Incorrect or incomplete information may be rejected.</p></details>
+      <details><summary>Fair play</summary><p>Cheating, hacks, scripts, and unauthorized tools are prohibited.</p></details>
+      <details><summary>Payments</summary><p>Online payments require a valid transaction reference and proof for organizer review. Cash remains pending until the organizer confirms receipt.</p></details>
+      <details><summary>Room ID and password</summary><p>Room credentials should be shared only with approved participants through the organizer's authorized process.</p></details>
+      <details><summary>Minimum participation</summary><p>At least 44 eligible players are required. The organizer must confirm whether the event proceeds, is cancelled, or is rescheduled.</p></details>
+    </section>
+    <section class="section"><h2>📞 Contact organizer</h2><p>Payment or registration help ke liye sirf message karein, call nahi.</p><p><b>Phone:</b> 9334166456</p><p><b>Instagram:</b> @mr_abhi_shek_1245</p></section>
+  </main>
+  <main id="adminView" class="hidden">
+    <section class="hero"><div class="eyebrow">Owner tools · Local preview only</div><h1>Admin Panel</h1><p>Manage saved registrations and tournament settings in this browser preview.</p></section>
+    <div class="notice">Important: This is not a secure online admin system. It has no server authentication or shared database. Anyone with access to this browser can inspect or edit local data. Do not use for real player/payment data.</div>
+    <section class="section" id="adminLogin"><h2>Owner panel demo access</h2><p class="muted">Enter the demo PIN to continue. This PIN is only for preview navigation.</p><div class="field"><label>Demo PIN</label><input id="adminPin" type="password" inputmode="numeric" placeholder="Demo PIN"></div><button onclick="adminLogin()">Open demo panel</button></section>
+    <div id="adminContent" class="hidden">
+      <div class="adminbar"><button onclick="showAdminTab('registrations')">Registrations</button><button class="secondary" onclick="showAdminTab('settings')">Tournament settings</button><button class="secondary" onclick="exportData()">Export JSON</button><button class="danger" onclick="clearRegistrations()">Clear registrations</button></div>
+      <section id="adminRegs" class="section"><h2>Player registrations</h2><div class="field"><label>Search name, UID, mobile or registration ID</label><input id="adminSearch" oninput="renderRegs()" placeholder="Search registrations"></div><div class="tablewrap"><table><thead><tr><th>ID / Player</th><th>Details</th><th>Payment</th><th>Status</th><th>Actions</th></tr></thead><tbody id="regRows"></tbody></table></div></section>
+      <section id="adminSettings" class="section hidden"><h2>Change tournament settings</h2><form id="settingsForm"><div class="formgrid">
+        <div class="field"><label>Tournament name</label><input id="sName" required></div>
+        <div class="field"><label>Tournament date</label><input id="sDate" type="date" required></div>
+        <div class="field"><label>Registration deadline</label><input id="sDeadline" type="date"></div>
+        <div class="field"><label>Day</label><input id="sDay"></div>
+        <div class="field"><label>Map</label><input id="sMap"></div>
+        <div class="field"><label>Game modes (comma separated)</label><input id="sModes" placeholder="Solo, Squad, CS, BR, Lone Wolf"></div>
+        <div class="field"><label>Tournament type</label><select id="sType"><option>Online</option><option>Online Custom Room</option></select></div>
+        <div class="field"><label>Room creation time</label><input id="sRoom"></div>
+        <div class="field"><label>Match start time</label><input id="sMatch"></div>
+        <div class="field"><label>Solo fee (₹)</label><input id="sSolo" type="number" min="0"></div>
+        <div class="field"><label>Squad fee (₹ per team)</label><input id="sSquad" type="number" min="0"></div>
+        <div class="field"><label>First prize (₹)</label><input id="sP1" type="number" min="0"></div>
+        <div class="field"><label>Second prize (₹)</label><input id="sP2" type="number" min="0"></div>
+        <div class="field"><label>Third prize (₹)</label><input id="sP3" type="number" min="0"></div>
+        <div class="field"><label>Total slots</label><input id="sSlots" type="number" min="1"></div>
+        <div class="field"><label>Minimum eligible players</label><input id="sMin" type="number" min="1"></div>
+        <div class="field"><label>Registration status</label><select id="sOpen"><option value="true">Open</option><option value="false">Closed</option></select></div>
+        <div class="field"><label>Contact number</label><input id="sPhone"></div>
+        <div class="field"><label>Instagram handle</label><input id="sInstagram"></div>
+        <div class="field full"><label>UPI ID (only if organizer has one)</label><input id="sUpi" placeholder="Do not invent an ID"></div>
+        <div class="field full"><label>Upload UPI QR image (local preview only)</label><input id="sQrFile" type="file" accept="image/*"><span class="smalltext">Saved in this browser only. It will not be publicly available to other devices.</span></div>
+        <div class="field full"><label>Rules / announcements</label><textarea id="sRules"></textarea></div>
+      </div><button type="submit">Save settings in this browser</button></form></section>
+    </div>
+  </main>
+  <footer class="footer">FF_TOURNAMENT_OFFICIAL · Standalone browser preview · Not connected to a live server</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const KEY='ff_tournament_standalone_v1';
+const defaultSettings={name:'FF_TOURNAMENT_OFFICIAL',date:'2026-10-18',deadline:'2026-10-17',day:'Sunday',map:'Bermuda',modes:'Solo, Squad',type:'Online',room:'10:00 AM',match:'10:30 AM',solo:15,squad:60,p1:299,p2:199,p3:99,slots:48,min:44,open:true,phone:'9334166456',instagram:'@mr_abhi_shek_1245',upi:'',qr:'',rules:'Correct UID required. No hacks or unauthorized tools. Cash payments remain pending until confirmed.'};
+let data={settings:{...defaultSettings},registrations:[]};
+try{const saved=localStorage.getItem(KEY);if(saved)data={...data,...JSON.parse(saved)};}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data));}catch(e){toast('Browser storage is full. Try a smaller QR image.');}}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',3000)}
+function money(n){return '₹'+Number(n||0).toLocaleString('en-IN')}
+function dateFmt(s){if(!s)return 'Not set';let d=new Date(s+'T12:00:00');return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}
+function renderSettings(){let s=data.settings;heroName.textContent=s.name;dateText.textContent=dateFmt(s.date);dayText.textContent=s.day||'';mapText.textContent=s.map;modeText.textContent=s.modes;slotsText.textContent=Math.max(0,Number(s.slots)-data.registrations.filter(r=>r.status!=='Rejected').length);minText.textContent=s.min+' players minimum';openText.textContent=s.open?'Open':'Closed';openText.style.color=s.open?'var(--green)':'#ff7777';deadlineText.textContent='Deadline: '+dateFmt(s.deadline);soloFee.textContent=money(s.solo);squadFee.textContent=money(s.squad);prize1.textContent=money(s.p1);prize2.textContent=money(s.p2);prize3.textContent=money(s.p3);roomTime.textContent=s.room;matchTime.textContent=s.match;scheduleMap.textContent=s.map;scheduleModes.textContent=s.modes;closedNotice.classList.toggle('hidden',s.open);submitBtn.disabled=!s.open;submitBtn.style.opacity=s.open?'1':'.5';qrDisplay.innerHTML=s.qr?'<img alt="Organizer UPI QR" src="'+s.qr+'" style="max-width:220px;width:100%;border-radius:10px"><p>Scan QR using your UPI app. Verify payment details before paying.</p>':'UPI QR has not been configured by the organizer yet.';qrField.classList.toggle('hidden',payment.value==='Cash');feePreview.textContent=money(regType.value==='Squad'?s.squad:s.solo);}
+function go(id,type){if(id==='admin'){publicView.classList.add('hidden');adminView.classList.remove('hidden');window.scrollTo(0,0);return}adminView.classList.add('hidden');publicView.classList.remove('hidden');document.getElementById(id)?.scrollIntoView({behavior:'smooth'});if(type){regType.value=type;updateRegFields()}}
+function updateRegFields(){let squad=regType.value==='Squad';document.querySelectorAll('.squadOnly').forEach(e=>e.classList.toggle('hidden',!squad));feePreview.textContent=money(squad?data.settings.squad:data.settings.solo)}
+function paymentFields(){qrField.classList.toggle('hidden',payment.value==='Cash');utr.disabled=payment.value==='Cash';if(payment.value==='Cash')utr.value='';}
+regForm.addEventListener('submit',e=>{e.preventDefault();if(!data.settings.open)return toast('Registration is closed.');if(data.registrations.filter(r=>r.status!=='Rejected').length>=Number(data.settings.slots))return toast('All slots are filled.');if(regType.value==='Squad'&&(!teamName.value.trim()||!p2.value.trim()||!p3.value.trim()||!p4.value.trim()))return toast('Enter team name and all four player details.');if(payment.value==='Online UPI'&&!utr.value.trim())return toast('Enter transaction ID / UTR for online payment.');const id='FF-'+Math.random().toString(36).slice(2,8).toUpperCase();const r={id,type:regType.value,name:playerName.value.trim(),ign:ign.value.trim(),uid:uid.value.trim(),mobile:mobile.value.trim(),city:city.value.trim(),state:state.value.trim(),team:teamName.value.trim(),p2:p2.value.trim(),p3:p3.value.trim(),p4:p4.value.trim(),payment:payment.value,utr:utr.value.trim(),status:'Pending',paymentStatus:payment.value==='Cash'?'Pending':'Review required',created:new Date().toLocaleString(),screenshotName:screenshot.files[0]?.name||''};data.registrations.unshift(r);save();regSuccess.classList.remove('hidden');regSuccess.innerHTML='<b>Registration saved in this browser preview.</b><br>Your Registration ID: <strong>'+id+'</strong><br>Save this ID to check status. This does not send the registration to an organizer.';regForm.reset();updateRegFields();paymentFields();renderSettings();toast('Local preview registration saved.');});
+function lookupRegistration(){let id=lookupId.value.trim().toUpperCase();let r=data.registrations.find(x=>x.id===id);lookupResult.innerHTML=r?'<div class="card"><b>'+r.id+'</b><p>'+esc(r.name)+' · '+esc(r.type)+'</p><p>Status: <span class="pill '+(r.status==='Approved'?'ok':r.status==='Rejected'?'bad':'pending')+'">'+r.status+'</span></p>'+(r.status==='Rejected'?'<p>Reason: '+esc(r.reason||'No reason entered')+'</p>':'')+'<p class="muted">Payment: '+esc(r.paymentStatus)+'</p></div>':'<p class="muted">No registration found in this browser for that ID.</p>'}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function adminLogin(){if(adminPin.value==='2468'){adminLoginBoxHide();renderRegs();fillSettingsForm();toast('Demo panel opened.')}else toast('Incorrect demo PIN.')}
+function adminLoginBoxHide(){adminLoginSection.classList.add('hidden');adminContent.classList.remove('hidden')}
+const adminLoginSection=document.getElementById('adminLogin');
+function showAdminTab(t){adminRegs.classList.toggle('hidden',t!=='registrations');adminSettings.classList.toggle('hidden',t!=='settings')}
+function renderRegs(){let q=(adminSearch.value||'').toLowerCase();let rows=data.registrations.filter(r=>JSON.stringify(r).toLowerCase().includes(q));regRows.innerHTML=rows.map(r=>`<tr><td><b>${esc(r.id)}</b><br>${esc(r.name)}<br><span class="smalltext">${esc(r.type)} · ${esc(r.created)}</span></td><td>IGN: ${esc(r.ign)}<br>UID: ${esc(r.uid)}<br>Mobile: ${esc(r.mobile)}<br>${r.team?'Team: '+esc(r.team)+'<br>':''}${esc(r.city)}, ${esc(r.state)}</td><td>${esc(r.payment)}<br>${esc(r.utr||'No UTR')}<br><span class="pill pending">${esc(r.paymentStatus)}</span><br><button class="small secondary" onclick="confirmCash('${r.id}')">Confirm payment</button></td><td><span class="pill ${r.status==='Approved'?'ok':r.status==='Rejected'?'bad':'pending'}">${esc(r.status)}</span><br><small>${esc(r.reason||'')}</small></td><td><button class="small" onclick="setStatus('${r.id}','Approved')">Approve</button> <button class="small danger" onclick="rejectReg('${r.id}')">Reject</button><br><button class="small secondary" onclick="viewReg('${r.id}')">Details</button></td></tr>`).join('')||'<tr><td colspan="5">No registrations saved in this browser yet.</td></tr>'}
+function setStatus(id,status){let r=data.registrations.find(x=>x.id===id);if(!r)return;r.status=status;r.reason='';save();renderRegs();renderSettings()}
+function rejectReg(id){let reason=prompt('Rejection reason (visible to player):');if(reason===null)return;let r=data.registrations.find(x=>x.id===id);r.status='Rejected';r.reason=reason;save();renderRegs();renderSettings()}
+function confirmCash(id){let r=data.registrations.find(x=>x.id===id);if(!r)return;r.paymentStatus='Confirmed';save();renderRegs();toast('Payment marked confirmed in local preview.')}
+function viewReg(id){let r=data.registrations.find(x=>x.id===id);alert(JSON.stringify(r,null,2))}
+function fillSettingsForm(){let s=data.settings;const map={sName:'name',sDate:'date',sDeadline:'deadline',sDay:'day',sMap:'map',sModes:'modes',sType:'type',sRoom:'room',sMatch:'match',sSolo:'solo',sSquad:'squad',sP1:'p1',sP2:'p2',sP3:'p3',sSlots:'slots',sMin:'min',sOpen:'open',sPhone:'phone',sInstagram:'instagram',sUpi:'upi',sRules:'rules'};for(let id in map)document.getElementById(id).value=s[map[id]]??''}
+settingsForm.addEventListener('submit',e=>{e.preventDefault();let s=data.settings;const map={sName:'name',sDate:'date',sDeadline:'deadline',sDay:'day',sMap:'map',sModes:'modes',sType:'type',sRoom:'room',sMatch:'match',sSolo:'solo',sSquad:'squad',sP1:'p1',sP2:'p2',sP3:'p3',sSlots:'slots',sMin:'min',sOpen:'open',sPhone:'phone',sInstagram:'instagram',sUpi:'upi',sRules:'rules'};for(let id in map){let key=map[id],v=document.getElementById(id).value;if(['solo','squad','p1','p2','p3','slots','min'].includes(key))v=Number(v);if(key==='open')v=v==='true';s[key]=v}let file=sQrFile.files[0];if(file){if(file.size>900000){toast('Choose a QR image under 900 KB for this browser preview.');return}const reader=new FileReader();reader.onload=()=>{s.qr=reader.result;save();renderSettings();toast('Settings and QR saved in this browser.');};reader.readAsDataURL(file)}else{save();renderSettings();toast('Settings saved in this browser.')}});
+function exportData(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ff-tournament-backup.json';a.click();URL.revokeObjectURL(a.href)}
+function clearRegistrations(){if(confirm('Delete all local preview registrations? Export a backup first if needed.')){data.registrations=[];save();renderRegs();renderSettings();toast('Local registrations cleared.')}}
+renderSettings();updateRegFields();paymentFields();
+</script>
+</body></html>
